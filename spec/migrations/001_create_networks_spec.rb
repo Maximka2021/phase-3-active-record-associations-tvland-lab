@@ -1,4 +1,5 @@
 require_relative '../../db/migrate/001_create_networks'
+require "pry"
 
 describe CreateNetworks do
   # This code is making sure the database is set to a clean state
@@ -22,8 +23,8 @@ describe CreateNetworks do
   end
 
   describe "#change" do
+
     it "creates a networks table with channel and call_letters columns" do
-      # This runs the current migration
       migrate!(:up, current_version)
       expect(Network.columns_hash).to include({
         "channel" => have_attributes(type: :integer),
